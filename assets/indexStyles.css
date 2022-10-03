@@ -1,0 +1,16 @@
+#navBar{
+    background-color: black;
+    text-align: center;
+}
+#navBar > a{
+    color: white;
+}
+#explicacion{
+    position: absolute;
+    width: 40%;
+}
+#imgPlantaCafe{
+    float:right;
+    display:inline;
+    width: 50%;
+}
