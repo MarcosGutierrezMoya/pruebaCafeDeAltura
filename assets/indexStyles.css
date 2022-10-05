@@ -30,6 +30,9 @@
 #navBar>section:nth-child(3){
     gap: 20px;
 }
+#navBar>section:nth-child(3)>div:nth-child(2)>#initSesion{
+    height: 32px;
+}
 #secTittle{
     display: flex;
     justify-content: center;
