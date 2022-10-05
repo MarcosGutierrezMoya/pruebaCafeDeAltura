@@ -1,7 +1,3 @@
-@font-face {
-    font-family: Outfit;
-    src: url(assets\fonts\outfit/Outfit-VariableFont_wght.ttf);
-}
 #head{
     display:flex;
     flex-direction: column;
@@ -17,14 +13,18 @@
 }
 #navBar>section>div>a{
     text-decoration: none;
-    font-family:Outfit;
+    font-family: 'Outfit', sans-serif;
     font-size: 23.46px;
     color: white;
 }
 #navBar>section:nth-child(2){
-    gap: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
 #navBar>section:nth-child(2)>div>a{
+    font-family: 'Outfit', sans-serif;
+    gap: 8px;
     font-size: 14px;
 }
 #navBar>section:nth-child(3){
