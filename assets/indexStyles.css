@@ -21,6 +21,15 @@
     font-size: 23.46px;
     color: white;
 }
+#navBar>section:nth-child(2){
+    gap: 20px;
+}
+#navBar>section:nth-child(2)>div>a{
+    font-size: 14px;
+}
+#navBar>section:nth-child(3){
+    gap: 20px;
+}
 #secTittle{
     display: flex;
     justify-content: center;
