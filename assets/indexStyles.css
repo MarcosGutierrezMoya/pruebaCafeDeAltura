@@ -1,16 +1,41 @@
-#navBar{
-    background-color: black;
-    text-align: center;
+@font-face {
+    font-family: Outfit;
+    src: url(assets\fonts\outfit/Outfit-VariableFont_wght.ttf);
 }
-#navBar > a{
+#head{
+    display:flex;
+    flex-direction: column;
+}
+#navBar{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    padding: 12px 40px 12px 40px;
+}
+#navBar>section{
+    display: flex;
+}
+#navBar>section>div>a{
+    text-decoration: none;
+    font-family:Outfit;
+    font-size: 23.46px;
     color: white;
 }
-#explicacion{
-    position: absolute;
-    width: 40%;
+#secTittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
 }
+#secTittle article{
+    display:flex;
+    flex-direction: column;
+    width: 588px;
+    height: 232px;
+}
+
 #imgPlantaCafe{
-    float:right;
-    display:inline;
-    width: 50%;
+    width: 588px;
+    height: 390px;
+    border-radius: 20px;
 }
