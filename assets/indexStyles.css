@@ -1,11 +1,18 @@
+*{
+    font-family: 'Outfit', sans-serif;
+}
 #head{
     display:flex;
     flex-direction: column;
 }
+#head>section{
+    background-color: #E3DED74D;
+}
+/*#region NavBar*/
 #navBar{
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: #2B2A2B;
     padding: 12px 40px 12px 40px;
 }
 #navBar>section{
@@ -17,33 +24,112 @@
     font-size: 23.46px;
     color: white;
 }
+#navBar>section>div:nth-child(2)>img{
+    height: 24.95px;
+    width: 20.29px;
+}
 #navBar>section:nth-child(2){
     display: flex;
     gap: 16px;
     align-items: center;
 }
 #navBar>section:nth-child(2)>div>a{
-    font-family: 'Outfit', sans-serif;
     gap: 8px;
     font-size: 14px;
 }
 #navBar>section:nth-child(3){
     gap: 20px;
 }
-#navBar>section:nth-child(3)>div:nth-child(2)>#initSesion{
-    height: 32px;
+#navBar>section:nth-child(3)>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
+#navBar>section:nth-child(3)>div:nth-child(1)>a{
+    font-size: 14px;
+    color: white;
+}
+#navBar>section:nth-child(3)>div:nth-child(1)>img{
+    width: 18px;
+    height: 18px;
+}
+#navBar>section:nth-child(3)>div:nth-child(2)>input{
+    border-radius: 4px;
+    background-color: #515051;
+    border:0 ;
+    color: white;
+    font-size: 16px;
+    height: 32px;
+    width: 130px;
+}
+/*#endregion */
+
+/*#region Articulo e imagen en el header*/
 #secTittle{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin:48px 40px;
     gap: 24px;
 }
-#secTittle article{
+#secTittle>article{
     display:flex;
     flex-direction: column;
     width: 588px;
     height: 232px;
+    margin-left: 0;
+    margin: 79px 0;
+    gap: 16px;
+}
+#secTittle>article>h3{
+    font-size: 18px;
+    font-weight: 600;
+    color: #2A5B45;
+    height: 24px;
+    margin: 0;
+}
+#secTittle>article>h1{
+    font-size: 40px;
+    font-weight: 600;
+    color: black;
+    height: 88px;
+    margin: 0;
+}
+#secTittle>article>p{
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    height: 32px;
+    margin: 0;
+}
+#secTittle>article>div{
+    display: flex;
+    gap: 16px;
+    height: 40px;
+    width: 321px;
+    margin: 0;
+}
+#secTittle>article>div>input:nth-child(1){
+    height: 40px;
+    width: 168px;
+    margin: 0;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    background-color: #1F1815;
+    font-size: 14px;
+    font-weight: 600;
+}
+#secTittle>article>div>input:nth-child(2){
+    height: 40px;
+    width: 168px;
+    margin: 0;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    background-color: #2A5B45;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 #imgPlantaCafe{
@@ -51,3 +137,40 @@
     height: 390px;
     border-radius: 20px;
 }
+/*#endregion*/
+
+/*#region main (imagenes bolsa cacao)*/
+main>section{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    margin:40px 0;
+    gap: 40px;
+    height: 603.39px;
+    width: 1200px;
+}
+main>section>h1{
+    height: 28px;
+    width: 120px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #2A5B45;
+}
+main>section>div{
+    height: 391.39px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+main>section>div>article{
+    height: 391.39px;
+    width: 282px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+/*#endregion*/
