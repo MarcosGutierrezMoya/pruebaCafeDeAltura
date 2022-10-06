@@ -4,6 +4,8 @@
 #head{
     display:flex;
     flex-direction: column;
+    width: 98vw;
+    height: 98vh;
 }
 #head>section{
     background-color: #E3DED74D;
@@ -13,10 +15,11 @@
     display: flex;
     justify-content: space-between;
     background-color: #2B2A2B;
-    padding: 12px 40px 12px 40px;
+    padding: 12px 40px;
 }
 #navBar>section{
     display: flex;
+    gap: 24px;
 }
 #navBar>section>div>a{
     text-decoration: none;
@@ -24,7 +27,10 @@
     font-size: 23.46px;
     color: white;
 }
-#navBar>section>div:nth-child(2)>img{
+#navBar>section:first-child{
+    display: flex;
+}
+#navBar>section:first-child>div:nth-child(2)>img{
     height: 24.95px;
     width: 20.29px;
 }
@@ -44,6 +50,9 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+#navBar>section:nth-child(3)>div:nth-child(1){
+    display: flex;
 }
 #navBar>section:nth-child(3)>div:nth-child(1)>a{
     font-size: 14px;
@@ -75,8 +84,6 @@
 #secTittle>article{
     display:flex;
     flex-direction: column;
-    width: 588px;
-    height: 232px;
     margin-left: 0;
     margin: 79px 0;
     gap: 16px;
@@ -92,21 +99,17 @@
     font-size: 40px;
     font-weight: 600;
     color: black;
-    height: 88px;
     margin: 0;
 }
 #secTittle>article>p{
     font-size: 14px;
     font-weight: 400;
     color: black;
-    height: 32px;
     margin: 0;
 }
 #secTittle>article>div{
     display: flex;
     gap: 16px;
-    height: 40px;
-    width: 321px;
     margin: 0;
 }
 #secTittle>article>div>input:nth-child(1){
@@ -132,7 +135,7 @@
     font-weight: 600;
 }
 
-#imgPlantaCafe{
+#head>section>div>aside>img{
     width: 588px;
     height: 390px;
     border-radius: 20px;
@@ -140,6 +143,10 @@
 /*#endregion*/
 
 /*#region main (imagenes bolsa cacao)*/
+body>main{
+    width: 98vw;
+    height: 98vh;
+}
 main>section{
     display: flex;    
     flex-direction: column;
@@ -148,10 +155,8 @@ main>section{
     background-color: white;
     margin:40px 0;
     gap: 40px;
-    height: 603.39px;
-    width: 1200px;
 }
-main>section>h1{
+main>section>h2{
     height: 28px;
     width: 120px;
     font-size: 24px;
@@ -159,11 +164,10 @@ main>section>h1{
     color: #2A5B45;
 }
 main>section>div{
-    height: 391.39px;
-    width: 1200px;
     display: flex;
     justify-content: space-between;
     gap: 24px;
+    margin: 0 40px;
 }
 main>section>div>article{
     height: 391.39px;
@@ -173,4 +177,271 @@ main>section>div>article{
     align-items: center;
     gap: 24px;
 }
+main>section>div>p:nth-child(2){
+    font-size: 14px;
+    font-weight: 400;
+}
+main>section>div>article>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+main>section>div>article>div>input{
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 14px;
+    font-weight: 600;
+}
+main>section>div>article>input{
+    background-color: #2A5B45;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px;
+}
+main>section>div>article>div>p{
+    margin: 0;
+}
+main>section>article>p>img{
+    font-size: 14px;
+    font-weight: 600;
+    height: 16px;
+    width: 61px;
+}
+main>section>article>p>img{
+    height: 8px;
+    width: 18px;
+    margin-left: 3px;
+    border-radius: 0px;
+}
+/*#endregion*/
+
+/*#region Form*/
+#formPage{
+    width: 98vw;
+    height: 98vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:#E3DED7;
+}
+#formPage>article{
+    margin: 0;
+    background-color:#E3DED7;
+}
+#formPage>article>div{
+    margin: 116px 24px 116px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+#formPage>article>div>header{
+    display: flex;
+    flex-direction:column;
+    gap: 24px;
+}
+#formPage>article>div>header>h3{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+#formPage>article>div>header>p{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    color: #6B7280;
+    margin: 0;
+}
+#formPage>article>div>main{
+    display: flex;
+    flex-direction:column;
+    gap: 24px;
+}
+#formPage>article>div>main>p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #6B7280;
+    margin: 0;
+}
+#formPage>article>div>main>div{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#formPage>article>div>main>div>p{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #6B7280;
+}
+#formPage>article>div>main>p{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: #6B7280;
+}
+#formPage>article>div>main>p>a{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #2B2A2B;
+}
+
+#formPage>aside{
+    margin-right: 40px;
+    background-color: white;
+}
+#formPage>aside>form{
+    display: flex;
+    flex-direction: column;
+    margin: 32px 51px 32px 67px;
+    gap: 24px;
+}
+#formPage>aside>form>div>label{
+    font-size: 12px;
+    font-weight: 400;
+}
+#formPage>aside>form>div>input{
+    border:1px solid #D1D5DB;
+    /* box-shadow:0px 1px 2px rgba(0, 0, 0, 0.5);*/
+    border-radius: 6px;
+    width: 100%;
+}
+#formPage>aside>form>div:nth-child(4)>textarea{
+    border:1px solid #D1D5DB;
+    /* box-shadow:0px 1px 2px rgba(0, 0, 0, 0.5);*/
+    border-radius: 6px;
+    width: 100%;
+    color: #6B7280;
+    margin: 0;
+}
+#formPage>aside>form>div:nth-child(5){
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+#formPage>aside>form>div:nth-child(5)>input{
+    height: 20px;
+    width: 16px;
+}
+#formPage>aside>form>div:nth-child(5)>p{
+    font-size: 14px;
+    font-weight: 400;
+    color: #374151;;
+}
+#formPage>aside>form>div:nth-child(5)>p>a{
+    font-size: 14px;
+    font-weight: 600;
+    color: #2B2A2B;
+}
+#formPage>aside>form>button{
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    background-color: #2A5B45;
+    border: 0;
+    border-radius: 4px;
+    margin: 0;
+}
+/*#endregion*/
+
+/*#region Footer*/
+body>footer{
+    width: 98vw;
+    height: 310px;
+    background-color:#1F1815;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body>footer>div{
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 204px;
+}
+body>footer>div>section{
+    display: flex;
+    align-items: center;
+}
+body>footer>div>section>div:first-child>a{
+    color: white;
+}
+body>footer>div>article{
+    display: flex;
+    justify-content: space-between;
+    margin-right:68px;
+}
+body>footer>div>article>aside:first-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right:68px;
+    gap: 16px;
+}
+body>footer>div>article>aside:first-child>p{
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+body>footer>div>article>aside:first-child>input:nth-child(2){
+    border-radius: 4px;
+    width: 182px;
+    height: 48px;
+    border: 0;
+    background-color: #515051;
+    color: white;
+}
+body>footer>div>article>aside:first-child>input:last-child{
+    border-radius: 4px;
+    width: 232px;
+    height: 48px;
+    border: 0;
+    background-color: #515051;
+    color: white;
+}
+body>footer>div>article>aside:nth-child(2){
+    margin-left: 127px;
+}
+body>footer>div>article>aside:nth-child(2)>section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+body>footer>div>article>aside:nth-child(2)>section>a{
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+body>footer>div>article>aside:nth-child(3)>section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 76px;
+    gap: 16px;
+}
+body>footer>div>article>aside:nth-child(3)>section>a{
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+body>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2B2A2B;
+    width: 98vw;
+}
+body>div>p{
+    color: white;
+    margin: 10px 0;
+}
+
+
 /*#endregion*/

@@ -76,28 +76,137 @@
     </header>
     <main>
         <section>
-            <h1>Novedades</h1>
+            <h2>Novedades</h2>
             <div>
                 <article>
                     <img src="assets/img/CoffeeBagCR.svg" alt="bolsa cafe costa rica">
-                    <p>Costa Rica Tarrazú</p>
-                    <p>9,00 €</p>
+                    <div>
+                        <input type="button" value="Costa Rica Tarrazú">
+                        <p>9,00 €</p>
+                    </div>
+                    <input type="button" value="Añadir">
                 </article>
                 <article>
                     <img src="assets/img/CoffeeBagC.svg" alt="bolsa cafe colombia">
-                </article>
-                <article>
-                    <img src="assets/img/CoffeeBagE.svg" alt="bolsa cafe etiopia">
+                    <div>
+                        <input type="button" value="Colombia Los Naranjos">
+                        <p>9,00 €</p>
+                    </div>
+                    <input type="button" value="Añadir">
                 </article>
                 <article>
                     <img src="assets/img/CoffeeBagLaos.svg" alt="bolsa cafe laos">
+                    <div>
+                        <input type="button" value="Laos Amanecer">
+                        <p>9,00 €</p>
+                    </div>
+                    <input type="button" value="Añadir">
+                </article>
+                <article>
+                    <img src="assets/img/CoffeeBagE.svg" alt="bolsa cafe etiopia">
+                    <div>
+                        <input type="button" value="Etiopía Yrgacheff">
+                        <p>9,00 €</p>
+                    </div>
+                    <input type="button" value="Añadir">
                 </article>
             </div>
             <article>
-                <p>Ver todos</p>
+                <p>Ver todos <img src="assets/img/flecha.svg" alt="flecha"></p>
             </article>
         </section>
     </main>
+    <section id="formPage">
+        <article> <!--parte izq-->
+            <div>
+                <header>
+                    <h3>Entra en contacto con nosotros</h3>
+                    <p>Si tienes dudas, ponte en contacto con nosotros a través del formulario y te responderemos lo antes posible.</p>
+                </header>
+                <main>
+                    <p>También puedes ponerte en contacto con nostros en nuestra dirección o a través del teléfono de la tienda.</p>
+                    <p>742 Evergreen Terrace<br>Springfield, OR 12345</p>
+                    <div>
+                        <p><img src="assets/img/tlfLogoGris.svg" alt="telefoncito"> +1 (555) 123-4567</p>
+                        <p><img src="assets/img/mailLogoGris.svg" alt="logo correo"> support@example.com</p>
+                    </div>
+                    <p>
+                        ¿Buscas un trabajo? 
+                        <a href="assets/pages/paraEmpresas.html">Ver nuestras ofertas.</a>
+                    </p>
+                </main>
+            </div>
+        </article>
+        <aside> <!--formulario-->
+            <form action="" method="get">
+                <div>
+                    <label for="username">Nombre completo</label><br>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="tlf">Teléfono</label><br>
+                    <select name="pais" id="pais">
+                        <option value="US">US</option>
+                        <option value="ESP">ESP</option>
+                    </select>
+                    <input type="number" id="tlf" name="tlf" min="0" minlength="9" maxlength="9" required>
+                </div>
+                <div>
+                    <p></p>
+                    <textarea name="opinion" id="opinion" cols="30" rows="10">       ¿En qué podemos ayudarte?</textarea>
+                </div>
+                <div>
+                    <input type="checkbox" name="politicas" id="politicas">
+                    <p>
+                        Acepto la <a href="">Política de privacidad</a> y los <a href="">Términos y condiciones</a>
+                    </p>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </aside>
+    </section>
+    <footer>
+        <div>
+            <section> <!-- 1) Nombre-->
+                <div>
+                    <a href="index.html">cafedealtura.com</a>
+                </div>
+                <div>
+                    <img src="assets/img/cafeLogo.svg" alt="simbolo cafe">
+                </div>
+            </section>
+            <article>
+                <aside>
+                    <p>Te ayudamos en</p>
+                    <input type="button" value="+34 919 49 05 18">
+                    <input type="button" value="hola@cafedealtura.com">
+                </aside>
+                <aside>
+                    <section>
+                        <a href="assets/pages/tienda.html">Tienda</a>
+                        <a href="assets/pages/Suscripción.html">Suscripción</a>
+                        <a href="assets/pages/paraEmpresas.html">Para empresas</a>
+                        <a href="assets/pages/sobreNosotros.html">Sobre nosotros</a>
+                        <a href="assets/pages/contacto.html">Contacto</a>
+                    </section>
+                </aside>
+                <aside>
+                    <section>
+                        <a href="assets/pages/tienda.html">Política de privacidad</a>
+                        <a href="assets/pages/Suscripción.html">Política de cookies</a>
+                        <a href="assets/pages/paraEmpresas.html">Términos y condiciones</a>
+                    </section>
+                </aside>
+            </article>
+        </div>
+    </footer>
+    <div>
+        <p>Todos los derechos reservados - Café de Altura SL - 2022</p>
+    </div>
 </body>
 
 </html>
