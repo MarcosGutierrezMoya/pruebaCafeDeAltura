@@ -19,6 +19,7 @@
 }
 #navBar>section{
     display: flex;
+    align-items: center;
     gap: 24px;
 }
 #navBar>section>div>a{
@@ -26,6 +27,11 @@
     font-family: 'Outfit', sans-serif;
     font-size: 23.46px;
     color: white;
+}
+#navBar>section:nth-child(2)>div:hover{
+    padding: 6px;
+    border-radius: 10px;
+    background-color: #3F3E3F;
 }
 #navBar>section:first-child{
     display: flex;
@@ -125,7 +131,7 @@
 }
 #secTittle>article>div>input:nth-child(2){
     height: 40px;
-    width: 168px;
+    width: 137px;
     margin: 0;
     border: 0;
     border-radius: 4px;
@@ -177,6 +183,9 @@ main>section>div>article{
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    border: 1px solid #E3DED7;
+    border-radius: 8px;
+    padding-top: 24px;
 }
 main>section>div>p:nth-child(2){
     font-size: 14px;
@@ -200,6 +209,9 @@ main>section>div>article>input{
     border: 0;
     border-radius: 4px;
     padding: 8px;
+}
+main>section>div>article>input:focus{
+    background-color: #2A5B45B2;
 }
 main>section>div>article>div>p{
     margin: 0;
@@ -392,6 +404,8 @@ body>footer>div>section{
 }
 body>footer>div>section>div:first-child>a{
     color: white;
+    text-decoration: none;
+    margin-right: 5px;
 }
 body>footer>div>article{
     display: flex;
@@ -439,6 +453,7 @@ body>footer>div>article>aside:nth-child(2)>section>a{
     color: white;
     font-size: 14px;
     font-weight: 400;
+    text-decoration: none;
     margin: 0;
 }
 body>footer>div>article>aside:nth-child(3)>section{
@@ -453,6 +468,7 @@ body>footer>div>article>aside:nth-child(3)>section>a{
     font-size: 14px;
     font-weight: 400;
     margin: 0;
+    text-decoration: none;
 }
 body>div{
     display: flex;
