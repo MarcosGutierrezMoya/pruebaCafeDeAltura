@@ -1,14 +1,15 @@
 *{
     font-family: 'Outfit', sans-serif;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* width: 1280px; */
+}
 #head{
     display:flex;
     flex-direction: column;
-    width: 98vw;
-    height: 486px;
-}
-#head>section{
-    background-color: #E3DED74D;
 }
 /*#region NavBar*/
 #navBar{
@@ -74,9 +75,12 @@
 /*#endregion */
 
 /*#region Articulo e imagen en el header*/
+#head>section{
+    background-color: #E3DED74D;
+}
 #secTittle{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin:48px 40px;
     gap: 24px;
@@ -84,8 +88,7 @@
 #secTittle>article{
     display:flex;
     flex-direction: column;
-    margin-left: 0;
-    margin: 79px 0;
+    width: 588px;
     gap: 16px;
 }
 #secTittle>article>h3{
@@ -94,18 +97,21 @@
     color: #2A5B45;
     height: 24px;
     margin: 0;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 #secTittle>article>h1{
     font-size: 40px;
     font-weight: 600;
     color: black;
     margin: 0;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 #secTittle>article>p{
     font-size: 14px;
     font-weight: 400;
     color: black;
     margin: 0;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 #secTittle>article>div{
     display: flex;
@@ -122,6 +128,7 @@
     background-color: #1F1815;
     font-size: 14px;
     font-weight: 600;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 #secTittle>article>div>input:nth-child(2){
     height: 40px;
@@ -133,42 +140,108 @@
     background-color: #2A5B45;
     font-size: 14px;
     font-weight: 600;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #head>section>div>aside>img{
-    width: 588px;
+    flex: 0 0 588px;
+    /* width: 588px; */
     height: 390px;
     border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 /*#endregion*/
 
-/*#region main (imagenes bolsa cacao)*/
-body>main{
-    width: 98vw;
-    height: 603.39px;
-    margin-top: 80px;
+/*#region imagenen fondo café*/
+#cajitas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    background-image: url(img/cafe.jpg);
+    padding: 48px 142px;
+    background-size:cover;
+    background-position: center;
 }
-main>section{
+#cajitas>h2{ /*Titulo*/
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+}
+#cajitas>section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+#cajitas>section>div{ /*Cajitas*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    flex:0 0 316px;
+    
+    /* width: 316px;*/
+    height: 232px; 
+    
+    background-color: white;
+    border: 1px solid #F7F5F3;
+    box-shadow: 0px 1px 4px rgba(227, 222, 215, 0.8);
+    border-radius: 8px;
+}
+#cajitas>section>div>div{ /*imagen cajitas*/
+    background-color: #2A5B45;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* width: 47px;
+    height: 47px;     */
+    
+    border-radius: 20px;
+    padding: 12px;
+}
+#cajitas>section>div>div>img{ /*imagen cajitas*/
+    width: 30px;
+    height: 30px;    
+}
+#cajitas>section>div>h3{ /*subtitulo*/
+    color: #2B2A2B;
+    font-size: 18px;
+    font-weight: 600;
+}
+#cajitas>section>div>p{ /*párrafo*/
+    color: #2B2A2B;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*#region Bolsas de café*/
+#bolsasCafe>section{
     display: flex;    
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: white;
-    margin:40px 0;
     gap: 40px;
+    padding: 40px 0 ;
 }
-main>section>h2{
-    height: 28px;
-    width: 120px;
+#bolsasCafe>section>h2{
     font-size: 24px;
     font-weight: 500;
     color: #2A5B45;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 main>section>div{
     display: flex;
     justify-content: space-between;
     gap: 24px;
-    margin: 0 40px;
 }
 main>section>div>article{
     height: 391.39px;
@@ -204,25 +277,127 @@ main>section>div>article>input{
 main>section>div>article>div>p{
     margin: 0;
 }
+main>section>article{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 main>section>article>a{
     font-size: 14px;
     font-weight: 600;
     height: 16px;
     width: 61px;
     color:black;
-    text-decoration: none;
 }
 main>section>article>a>img{
     height: 8px;
     width: 18px;
-    margin-left: 3px;
     border-radius: 0px;
+}
+/*#endregion*/
+
+/*#region faq*/
+#faq{
+    background-color: #2A5B45;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:48px 386px;
+    gap: 24px;
+}
+#faq>h2{
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+#faq>article{
+    display: flex;
+    align-items:center;
+    gap: 16px;
+}
+#faq>article>a{
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+/*preguntas*/
+#faq>main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+#faq>main>article{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    
+    /* flex: 0 0 688px; */
+    width: 668px;
+    padding: 24px;
+    /* gap: 16px; */
+    border-radius: 10px;
+}
+#faq>main>article>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 668px;
+}
+#faq>main>article>div>h3{
+    font-size: 18px;
+    font-weight: 600;
+}
+#faq>main>article>p{
+    font-size: 13px;
+    font-weight: 400;
+}
+/*#endregion*/
+
+/*#region info*/
+#info>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 45px 40px;
+}
+#info>div>section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 588px;
+    /* margin: 137px 24px 137px 0; */
+}
+#info>div>section>h2{
+    color: #2A5B45;
+}
+#info>div>section>p{
+    color: #111827;
+}
+#info>div>section>article{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+#info>div>section>article>a{
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
+}
+#info>div>aside{
+    width: 588px;
+}
+#info>div>aside>img{
+    flex: 0 0 588px;
+    height: 390px;
+    /* width: 588px; */
+    border-radius: 20px;
 }
 /*#endregion*/
 
 /*#region Form*/
 #formPage{
-    width: 98vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color:#E3DED7;
@@ -373,7 +548,6 @@ main>section>article>a>img{
 
 /*#region Footer*/
 body>footer{
-    width: 98vw;
     height: 310px;
     background-color:#1F1815;
     display: flex;
@@ -459,7 +633,6 @@ body>div{
     justify-content: center;
     align-items: center;
     background-color: #2B2A2B;
-    width: 98vw;
 }
 body>div>p{
     color: white;
