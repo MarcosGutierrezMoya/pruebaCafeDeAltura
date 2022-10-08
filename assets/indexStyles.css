@@ -203,6 +203,9 @@ main>section>div>article>div>input{
     font-size: 14px;
     font-weight: 600;
 }
+main>section>div>article:hover{
+    background-color: #F7F5F3;
+}
 main>section>div>article>input{
     background-color: #2A5B45;
     color: white;
@@ -210,7 +213,7 @@ main>section>div>article>input{
     border-radius: 4px;
     padding: 8px;
 }
-main>section>div>article>input:focus{
+main>section>div>article>input:hover{
     background-color: #2A5B45B2;
 }
 main>section>div>article>div>p{
