@@ -4,7 +4,7 @@
 body{
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    /* align-items: stretch; */
     /* width: 1280px; */
 }
 #head{
