@@ -1,0 +1,33 @@
+body>main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 24px;
+}
+body>main>h2{
+    font-size: 24px;
+    font-weight: 600;
+    color: #2A5B45;
+}
+body>main>div{
+    display: flex;
+    align-items:center;
+    padding: 8px;
+    gap: 24px;
+}
+body>main>div>article{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 24px;
+}
+body>main>div>aside{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 24px;
+    background-color: antiquewhite;
+}
