@@ -250,6 +250,8 @@ body{
     font-size: 24px;
     font-weight: 500;
     color: #2A5B45;
+}
+#bolsasCafe>section>#News{
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 main>section>div{
