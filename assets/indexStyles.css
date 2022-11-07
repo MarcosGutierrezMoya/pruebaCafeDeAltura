@@ -16,6 +16,8 @@ body{
 #navBar{
     display: flex;
     justify-content: space-evenly;
+    position: sticky;
+    top: 0;
     background-color: #2B2A2B;
     padding: 12px 40px;
 }

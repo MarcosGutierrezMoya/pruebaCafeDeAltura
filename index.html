@@ -16,50 +16,50 @@
 <body>
     <!--Marcos Gutierrez Moya-->
     <!--Promo full time-->
+    <nav id="navBar">
+        <section> <!-- 1) Nombre-->
+            <div>
+                <a href="index.html">cafedealtura.com</a>
+            </div>
+            <div>
+                <img src="assets/img/cafeLogo.svg" alt="simbolo cafe">
+            </div>
+        </section>
+        <section> <!-- 2) Páginas-->
+            <div>
+                <a href="assets/pages/tienda.html">Tienda</a>
+            </div>
+            <div>
+                <a href="assets/pages/Suscripción.html">Suscripción</a>
+            </div>
+            <div>
+                <a href="assets/pages/paraEmpresas.html">Para empresas</a>
+            </div>
+            <div>
+                <a href="assets/pages/sobreNosotros.html">Sobre nosotros</a>
+            </div>
+            <div>
+                <a href="assets/pages/contacto.html">Contacto</a>
+            </div>
+        </section>
+        <section> <!-- 3) teléfono-->
+            <div>
+                <img src="assets/img/tlfLogo.svg" alt="Logo de teléfono">
+                <a href="tel:+34919490518">+34 919 49 05 18</a>
+            </div>
+            <div>
+                <input type="button" value="Iniciar sesión" id="initSesion">
+            </div>
+        </section>
+        <section> <!-- 4) logo tienda-->
+            <div>
+                <a href="assets/pages/cesta.html">
+                    <input type="image" src="assets/img/tiendaLogo.svg" alt="Logo de la cesta">
+                </a>
+            </div>
+        </section>
+    </nav>
     <header id="head">
-        <nav id="navBar">
-            <section> <!-- 1) Nombre-->
-                <div>
-                    <a href="index.html">cafedealtura.com</a>
-                </div>
-                <div>
-                    <img src="assets/img/cafeLogo.svg" alt="simbolo cafe">
-                </div>
-            </section>
-            <section> <!-- 2) Páginas-->
-                <div>
-                    <a href="assets/pages/tienda.html">Tienda</a>
-                </div>
-                <div>
-                    <a href="assets/pages/Suscripción.html">Suscripción</a>
-                </div>
-                <div>
-                    <a href="assets/pages/paraEmpresas.html">Para empresas</a>
-                </div>
-                <div>
-                    <a href="assets/pages/sobreNosotros.html">Sobre nosotros</a>
-                </div>
-                <div>
-                    <a href="assets/pages/contacto.html">Contacto</a>
-                </div>
-            </section>
-            <section> <!-- 3) teléfono-->
-                <div>
-                    <img src="assets/img/tlfLogo.svg" alt="Logo de teléfono">
-                    <a href="tel:+34919490518">+34 919 49 05 18</a>
-                </div>
-                <div>
-                    <input type="button" value="Iniciar sesión" id="initSesion">
-                </div>
-            </section>
-            <section> <!-- 4) logo tienda-->
-                <div>
-                    <a href="assets/pages/cesta.html">
-                        <input type="image" src="assets/img/tiendaLogo.svg" alt="Logo de la cesta">
-                    </a>
-                </div>
-            </section>
-        </nav>
         <section>
             <div id="secTittle">
                 <article>
@@ -153,25 +153,25 @@
             <article>
                 <div>
                     <h3>¿Cómo hago el pedido?</h3>
-                    <img src="assets/img/flechitaArriba.svg" alt="abierto">
+                    <img id="flecha1" class="flechaFaq" src="assets/img/flechitaArriba.svg" alt="abierto">
                     <!-- <input type="button" value="^"> -->
                 </div>
                 <img src="assets/img/Divider.png" alt="">
-                <p>Selecciona el café que desees probar y completa el proceso de compra. Si lo prefieres, te preguntaremos cada cuánto quieres que te lo mandemos a casa y así nunca te quedarás sin café.</p>
+                <p id="text0">Selecciona el café que desees probar y completa el proceso de compra. Si lo prefieres, te preguntaremos cada cuánto quieres que te lo mandemos a casa y así nunca te quedarás sin café.</p>
             </article>
             <article>
                 <div>
                     <h3>¿Por qué los precios son tan bajos?</h3>
-                    <img src="assets/img/flechitaArriba.svg" alt="abierto">
+                    <img id="flecha2" class="flechaFaq" src="assets/img/flechitaArriba.svg" alt="abierto">
                     <!-- <input type="button" value="^"> -->
                 </div>
                 <img src="assets/img/Divider.png" alt="">
-                <p>Viajamos constantemente para encontrar los mejores granos y a los agricultores más exigentes. Si podemos ofrecerte estos precios es porque tratamos directamente con los productores de café, sin intermediarios. Así obtenemos el mejor precio para ti y la persona que está detrás de los granos de café recibe el mayor beneficio posible. </p>
+                <p id="text1">Viajamos constantemente para encontrar los mejores granos y a los agricultores más exigentes. Si podemos ofrecerte estos precios es porque tratamos directamente con los productores de café, sin intermediarios. Así obtenemos el mejor precio para ti y la persona que está detrás de los granos de café recibe el mayor beneficio posible. </p>
             </article>
             <article>
                 <div>
                     <h3>¿Es posible enviar café a mi oficina?</h3>
-                    <img src="assets/img/flechitaAbajo.svg" alt="cerrado">
+                    <img id="flecha3" class="flechaFaq"src="assets/img/flechitaAbajo.svg" alt="cerrado">
                     <!-- <input type="button" value="^"> -->
                 </div>
             </article>
@@ -297,6 +297,7 @@
     <div>
         <p>Todos los derechos reservados - Café de Altura SL - 2022</p>
     </div>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
