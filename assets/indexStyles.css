@@ -292,12 +292,13 @@ main>section>div>article>div>input{
 main>section>div>article:hover{
     background-color: #F7F5F3;
 }
-main>section>div>article>input{
+main>section>div>article>.masProducto{
     background-color: #2A5B45;
     color: white;
     border: 0;
     border-radius: 4px;
     padding: 8px;
+    cursor: pointer;
 }
 main>section>div>article>input:hover{
     background-color: #2A5B45B2;
@@ -369,16 +370,28 @@ main>section>article>a>img{
     border-radius: 10px;
 }
 #faq>main>article>div{
+    width: 100%;
+}
+#faq>main>article>div>.separador{
+    height: 1px;
+    width: 100%;
+    background-color: #E3DED7;
+    margin-bottom: 16px;
+}
+#faq>main>article>section{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 668px;
 }
+#faq>main>article>section>img{
+    cursor: pointer;
+}
 #faq>main>article>div>h3{
     font-size: 18px;
     font-weight: 600;
 }
-#faq>main>article>p{
+#faq>main>article>div>p{
     font-size: 13px;
     font-weight: 400;
 }

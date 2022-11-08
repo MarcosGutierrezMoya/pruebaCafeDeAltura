@@ -1,0 +1,1 @@
+cantidadProducto.innerText = 1;

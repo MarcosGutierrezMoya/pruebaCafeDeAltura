@@ -31,3 +31,54 @@ body>main>div>aside{
     gap: 24px;
     background-color: antiquewhite;
 }
+
+#productos>h3{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#producto{
+    display: flex;
+    gap: 24px;
+}
+#producto>#cantidad{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#producto>#cantidad>div>p{
+    font-size: 12px;
+    font-weight: 400;
+    color: #2A5B45;
+}
+#producto>#cantidad>div:nth-child(2){
+    background: rgba(42, 91, 69, 0.1);
+    border-radius: 200px;
+}
+#producto>#cantidad>div{
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#producto>img{
+    width: 55.66px;
+}
+
+#producto>#infoProducto{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 506.34px;
+}
+#producto>#infoProducto>p:first-child{
+    font-size: 14px;
+    font-weight: 600;
+}
+#producto>#infoProducto>p:last-child{
+    font-size: 14px;
+    font-weight: 400;
+}
