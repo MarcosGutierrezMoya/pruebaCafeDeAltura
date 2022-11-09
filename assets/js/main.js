@@ -68,8 +68,13 @@ else if (document.title == "Cesta") {
     let imgProducto = document.getElementById("imgProducto");
     let infoProducto = document.getElementById("infoProducto");
 
+    //#region CreaElementos
     let articulo = zonaProducto.appendChild(document.createElement("article"));
     let selecCantidad = articulo.appendChild(document.createElement("div")).setAttribute("id","cantidad");
+    let divMinus = selecCantidad.appendChild(document.createElement("div"));
+    let divCatidad = selecCantidad.appendChild(document.createElement("div"));
+    let divPlus = selecCantidad.appendChild(document.createElement("div"));
+    //#endregion
 
     let object = JSON.parse(localStorage.getItem("precio"));
     precioProducto.innerText = Object.values(object)[1];
