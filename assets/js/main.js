@@ -1,11 +1,24 @@
 // import { ponerPrecio, precio } from "./cesta.js";
 // let flechas = [];
 // flechas = document.getElementsByClassName("flechaFaq");
-
 if (document.title == "Café de altura") {
     let precio = 0;
     let nombre = "";
     let source = "";
+    let adds = 0;
+    
+    localStorage.clear();
+
+
+    // if (!localTime) {
+    //     localStorage.setItem("time",JSON.stringify({"num": 0}));
+    // }
+    // let localTime = JSON.parse(localStorage.getItem("time"));
+    // if (Object.values(localTime)[0] == 0) {
+    //     localStorage.clear();
+    //     localStorage.setItem("time",JSON.stringify({"num": 1}));
+    // }
+
     for (let i = 0; i < document.getElementsByClassName("flechaFaq").length; i++) {
         document.getElementsByClassName("flechaFaq")[i].addEventListener("click",occult);
     }
@@ -55,30 +68,74 @@ if (document.title == "Café de altura") {
     }
     
     function añadir() {
-        precio = this.previousSibling.previousSibling.children[1].textContent;
-        nombre = this.previousSibling.previousSibling.children[0].value;
-        source = this.previousSibling.previousSibling.previousSibling.previousSibling.src;
-        localStorage.setItem("precio",JSON.stringify({"name":nombre, "age":precio,"src":source}));
-        console.log(precio);
+        if (adds < 4) {
+            adds += 1;
+            precio = this.previousSibling.previousSibling.children[1].textContent;
+            nombre = this.previousSibling.previousSibling.children[0].value;
+            source = this.previousSibling.previousSibling.previousSibling.previousSibling.src;
+            localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "age":precio,"src":source}));
+            localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+        }
     }
 }
 else if (document.title == "Cesta") {
-    let zonaProducto = document.getElementById("zonaProducto");
-    let precioProducto = document.getElementById("precioProducto");
-    let imgProducto = document.getElementById("imgProducto");
-    let infoProducto = document.getElementById("infoProducto");
-
-    //#region CreaElementos
-    let articulo = zonaProducto.appendChild(document.createElement("article"));
-    let selecCantidad = articulo.appendChild(document.createElement("div")).setAttribute("id","cantidad");
-    let divMinus = selecCantidad.appendChild(document.createElement("div"));
-    let divCatidad = selecCantidad.appendChild(document.createElement("div"));
-    let divPlus = selecCantidad.appendChild(document.createElement("div"));
-    //#endregion
-
-    let object = JSON.parse(localStorage.getItem("precio"));
-    precioProducto.innerText = Object.values(object)[1];
-    imgProducto.src = Object.values(object)[2];
-    infoProducto.getElementsByTagName("p")[0].innerText = Object.values(object)[0];
-    console.log(JSON.parse(localStorage.getItem("precio")));
+    let zonaProducto = document.getElementsByClassName("zonaProducto")[0];
+    // let precioProducto = document.getElementsByClassName("precioProducto")[0];
+    // let imgProducto = document.getElementsByClassName("imgProducto")[0];
+    // let infoProducto = document.getElementsByClassName("infoProducto")[0];
+    let cantidad = 1;
+    
+    if(JSON.parse(localStorage.getItem("cantidad"))) {
+        let cuantity = JSON.parse(localStorage.getItem("cantidad"));
+        for (let i = 1; i <= Object.values(cuantity)[0]; i++) {
+            let obj = JSON.parse(localStorage.getItem(`precio${i}`));
+            console.log(obj);
+            //#region CreaElementos
+            let article = zonaProducto.appendChild(document.createElement("article"));
+            article.setAttribute("class","producto");
+            let selecCantidad = article.appendChild(document.createElement("div"));
+            selecCantidad.setAttribute("class","cantidad");
+            
+            //Seccion sumar y restar cantidad
+            let divMinus = selecCantidad.appendChild(document.createElement("div"));
+            let divCatidad = selecCantidad.appendChild(document.createElement("div"));
+            let divPlus = selecCantidad.appendChild(document.createElement("div"));
+            
+            let imgDivMinus = divMinus.appendChild(document.createElement("img"));
+            imgDivMinus.src = "../img/logo-.svg";
+            imgDivMinus.addEventListener("click",()=>{(cantidad>0)?cantidad-=1:cantidad; cantidadProducto.innerText = cantidad.toString()});
+            
+            let cantidadProducto = divCatidad.appendChild(document.createElement("p"));
+            cantidadProducto.setAttribute("class","cantidadProducto");
+            cantidadProducto.innerText = cantidad.toString();
+            
+            let imgDivPlus = divPlus.appendChild(document.createElement("img"));
+            imgDivPlus.src = "../img/logo+.svg";
+            imgDivPlus.addEventListener("click",()=>{cantidad+=1;cantidadProducto.innerText = cantidad.toString()});
+            
+            //Imagen producto
+            let newImgProduct = article.appendChild(document.createElement("img"));
+            newImgProduct.src = Object.values(obj)[2];
+            newImgProduct.setAttribute("class","imgProducto");
+            
+            //Info imagen producto
+            let infoImgProduct = article.appendChild(document.createElement("div"));
+            infoImgProduct.setAttribute("class","infoProducto");
+            let nameProduct = infoImgProduct.appendChild(document.createElement("p"));
+            nameProduct.appendChild(document.createElement("strong")).innerText = Object.values(obj)[0];
+            infoImgProduct.appendChild(document.createElement("p")).innerText = "Paquete de café, 250 gr";
+            
+            //Precio del producto
+            let priceProduct = article.appendChild(document.createElement("h3"));
+            priceProduct.setAttribute("class","precioProducto");
+            priceProduct.innerText = Object.values(obj)[1];
+            
+            //#endregion
+            
+        }
+        // precioProducto.innerText = Object.values(object)[1];
+        // imgProducto.src = Object.values(object)[2];
+        // infoProducto.getElementsByTagName("p")[0].innerText = Object.values(object)[0];
+        // console.log(JSON.parse(localStorage.getItem("precio")));
+    }
 }

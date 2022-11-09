@@ -37,25 +37,25 @@ body>main>div>aside{
     font-weight: 600;
 }
 
-#producto{
+.producto{
     display: flex;
     gap: 24px;
 }
-#producto>#cantidad{
+.producto>.cantidad{
     display: flex;
     align-items: center;
     gap: 8px;
 }
-#producto>#cantidad>div>p{
+.producto>.cantidad>div>p{
     font-size: 12px;
     font-weight: 400;
-    color: #2A5B45;
+    color: .2A5B45;
 }
-#producto>#cantidad>div:nth-child(2){
+.producto>.cantidad>div:nth-child(2){
     background: rgba(42, 91, 69, 0.1);
     border-radius: 200px;
 }
-#producto>#cantidad>div{
+.producto>.cantidad>div{
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -64,21 +64,21 @@ body>main>div>aside{
     justify-content: center;
 }
 
-#producto>img{
+.producto>img{
     width: 55.66px;
 }
 
-#producto>#infoProducto{
+.producto>.infoProducto{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     width: 506.34px;
 }
-#producto>#infoProducto>p:first-child{
+.producto>.infoProducto>p:first-child{
     font-size: 14px;
     font-weight: 600;
 }
-#producto>#infoProducto>p:last-child{
+.producto>.infoProducto>p:last-child{
     font-size: 14px;
     font-weight: 400;
 }
