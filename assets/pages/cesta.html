@@ -52,16 +52,12 @@
             </div>
         </section>
     </nav>
-    <header id="head">
-        <h1 style="text-align:center;">Página de la tienda</h1>
-    </header>
     <main>
         <h2>Cesta</h2>
         <div>
             <article id="productos">
                 <h3>Productos</h3>
                 <div class="zonaProducto">
-                    <!-- #region articulo de prueba -->
                     <!-- <article class="producto">
                         <div class="cantidad">
                             <div>
@@ -81,7 +77,6 @@
                         </div>
                         <h3 class="precioProducto"></h3>
                     </article> -->
-                    <!-- #endregion -->
                 </div>
                 <h3>Seleccionar envío</h3>
             </article>
@@ -90,12 +85,25 @@
                 <div class="separador"></div>
                 <section>
                     <p>SUBTOTAL</p>
-                    <p id="subtotal"></p>
+                    <p><strong id="subtotal">0€</strong></p>
                 </section>
                 <section>
                     <p>ENVÍO</p>
-                    <p>GRATIS</p>
+                    <p><strong>GRATIS</strong></p>
                 </section>
+                <div class="separador"></div>
+                <section>
+                    <p><strong>TOTAL</strong></p>
+                    <p><strong id="total"></strong></p>
+                </section>
+                <section>
+                    <p></p>
+                    <p style="color: #515051;font-size: 12px; font-weight: 400;">Incluye 3,78€ de IVA</p>
+                </section>
+                <div>
+                    <button id="cestaCheckout">Ir a checkout</button>
+                    <button id="cestaSeguirComprando">Ir a checkout</button>
+                </div>
             </aside>
         </div>
     </main>

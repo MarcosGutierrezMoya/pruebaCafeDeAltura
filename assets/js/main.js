@@ -20,14 +20,17 @@ if (document.title == "Café de altura") {
     //     localStorage.setItem("time",JSON.stringify({"num": 1}));
     // }
     //#endregion
-
-    for (let i = 0; i < document.getElementsByClassName("flechaFaq").length; i++) {
-        document.getElementsByClassName("flechaFaq")[i].addEventListener("click",occult);
+    
+    function añadir() {
+        if (adds < 4) {
+            adds += 1;
+            precio = this.previousSibling.previousSibling.children[1].textContent;
+            nombre = this.previousSibling.previousSibling.children[0].value;
+            source = this.previousSibling.previousSibling.previousSibling.previousSibling.src;
+            localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source}));
+            localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+        }
     }
-    for (let i = 0; i < document.getElementsByClassName("masProducto").length; i++) {
-        document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
-    }
-    document.getElementById("text2").hidden = true;
     function occult(i) {
         let p1 = document.getElementById("text0");
         let p2 = document.getElementById("text1");
@@ -68,17 +71,14 @@ if (document.title == "Café de altura") {
                 break;
         }
     }
-    
-    function añadir() {
-        if (adds < 4) {
-            adds += 1;
-            precio = this.previousSibling.previousSibling.children[1].textContent;
-            nombre = this.previousSibling.previousSibling.children[0].value;
-            source = this.previousSibling.previousSibling.previousSibling.previousSibling.src;
-            localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source}));
-            localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
-        }
+    for (let i = 0; i < document.getElementsByClassName("flechaFaq").length; i++) {
+        document.getElementsByClassName("flechaFaq")[i].addEventListener("click",occult);
     }
+    for (let i = 0; i < document.getElementsByClassName("masProducto").length; i++) {
+        document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
+    }
+    document.getElementById("text2").hidden = true;
+    
 }
 else if (document.title == "Cesta") {
     let zonaProducto = document.getElementsByClassName("zonaProducto")[0];
@@ -87,7 +87,7 @@ else if (document.title == "Cesta") {
     // let imgProducto = document.getElementsByClassName("imgProducto")[0];
     // let infoProducto = document.getElementsByClassName("infoProducto")[0];
     //#endregion
-    // let cantidad = 1;
+    let cantidad = 0;
     
     if(JSON.parse(localStorage.getItem("cantidad"))) {
         let cuantity = JSON.parse(localStorage.getItem("cantidad"));
@@ -139,8 +139,15 @@ else if (document.title == "Cesta") {
  
             //#endregion
             
+            let subTotalPrice = document.getElementById("subtotal");
+            let totalPrice = document.getElementById("total");
+            
+            cantidad = parseInt(Object.values(obj)[1]);
+            subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + cantidad},00€`;
+
+            totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`
         }
-        
+
         //#region Prueba del articulo
         // precioProducto.innerText = Object.values(object)[1];
         // imgProducto.src = Object.values(object)[2];

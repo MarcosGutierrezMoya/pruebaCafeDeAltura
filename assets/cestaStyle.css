@@ -99,6 +99,9 @@ body>main>div>aside{
     padding: 24px;
     width: 384px;
     height: 280px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
 }
 #prize>.separador{
     height: 1px;
@@ -113,8 +116,38 @@ body>main>div>aside{
 #prize>section{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+#prize>section>p:first-child{
+    font-size: 14px;
+    font-weight: 400;
 }
 #prize>section>p:last-child{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#prize>div{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+#cestaCheckout{
+    width: 129px;
+    height: 40px;
+    padding: 12px 24px;
+    border: 0;
+    color: white;
+    background: #2A5B45;
+    border-radius: 4px;
+}
+#cestaSeguirComprando{
+    width: 165px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+    color:#2A5B45;
     font-size: 14px;
     font-weight: 600;
 }
