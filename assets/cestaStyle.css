@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+}
+/* #region body */
 body>main{
     display: flex;
     flex-direction: column;
@@ -29,9 +33,11 @@ body>main>div>aside{
     align-items: flex-start;
     padding: 8px;
     gap: 24px;
-    background-color: antiquewhite;
+    background-color: #F7F5F3;;
 }
+/* #endregion */
 
+/* #region articulos */
 #productos>h3{
     font-size: 18px;
     font-weight: 600;
@@ -49,11 +55,16 @@ body>main>div>aside{
 .producto>.cantidad>div>p{
     font-size: 12px;
     font-weight: 400;
-    color: .2A5B45;
+    color: #2A5B45;
 }
-.producto>.cantidad>div:nth-child(2){
+.producto>.cantidad>section{
     background: rgba(42, 91, 69, 0.1);
     border-radius: 200px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .producto>.cantidad>div{
     width: 24px;
@@ -81,4 +92,29 @@ body>main>div>aside{
 .producto>.infoProducto>p:last-child{
     font-size: 14px;
     font-weight: 400;
+}
+/* #endregion  */
+
+#prize{
+    padding: 24px;
+    width: 384px;
+    height: 280px;
+}
+#prize>.separador{
+    height: 1px;
+    width: 100%;
+    background-color: #E3DED7;
+    margin-bottom: 16px;
+}
+#prize>h3{
+    font-size: 18px;
+    font-weight: 600;
+}
+#prize>section{
+    display: flex;
+    justify-content: space-between;
+}
+#prize>section>p:last-child{
+    font-size: 14px;
+    font-weight: 600;
 }
