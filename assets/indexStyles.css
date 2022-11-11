@@ -363,10 +363,8 @@ main>section>article>a>img{
     background-color: white;
     gap: 16px;
 
-    /* flex: 0 0 688px; */
     width: 668px;
     padding: 24px;
-    /* gap: 16px; */
     border-radius: 10px;
 }
 #faq>main>article>div{
@@ -394,6 +392,14 @@ main>section>article>a>img{
 #faq>main>article>div>p{
     font-size: 13px;
     font-weight: 400;
+}
+.FAQtext.current-item{
+    height: 50px;
+}
+.FAQtext{
+    height: 0;
+    overflow: hidden;
+    transition: 1s ease height;
 }
 /*#endregion*/
 

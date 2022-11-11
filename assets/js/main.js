@@ -59,22 +59,33 @@ if (document.title == "Café de altura") {
         }
     }
     function occult(i) {
-        let p1 = document.getElementById("text0");
-        let p2 = document.getElementById("text1");
-        let p3 = document.getElementById("text2");
-        let srcUp ="assets/img/flechitaArriba.svg";
-        let srcDown ="assets/img/flechitaAbajo.svg";
+        let p1 = document.getElementsByClassName("FAQtext")[0];
+        let p2 = document.getElementsByClassName("FAQtext")[1];
+        let p3 = document.getElementsByClassName("FAQtext")[2];
+        let srcUp = "assets/img/flechitaArriba.svg";
+        let srcDown = "assets/img/flechitaAbajo.svg";
     
         switch (i.target.id) {
             case "flecha1":
-                console.log(p1);
-                if(p1.hidden==true){
-                    p1.hidden=false;
-                    this.src=srcUp;
-                } else{
-                    p1.hidden=true;
-                    this.src=srcDown;
+                if (p1.classList.contains('current-item')) {
+                    
+                    for (var e=0; e<1; e++) {
+                        
+                        p1.classList.remove('current-item');
+                    } 
+                    console.log(p1.classList);
+                } else {
+                    
+                    p1.classList.add('current-item');
+                    console.log(p1.classList);
                 }
+                // if(p1.hidden==true){
+                //     // p1.hidden=false;
+                //     this.src=srcUp;
+                // } else{
+                //     // p1.hidden=true;
+                //     this.src=srcDown;
+                // }
                 break;
             case "flecha2":
                 if(p2.hidden==true){
@@ -104,9 +115,9 @@ if (document.title == "Café de altura") {
     for (let i = 0; i < document.getElementsByClassName("masProducto").length; i++) {
         document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
     }
-    document.getElementById("text0").hidden = true;
-    document.getElementById("text1").hidden = true;
-    document.getElementById("text2").hidden = true;
+    // document.getElementsByClassName("FAQtext")[0].hidden = true;
+    document.getElementsByClassName("FAQtext")[1].hidden = true;
+    document.getElementsByClassName("FAQtext")[2].hidden = true;
     //#endregion
 
     //#region Formulario
