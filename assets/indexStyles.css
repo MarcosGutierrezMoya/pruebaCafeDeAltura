@@ -608,6 +608,10 @@ main>section>article>a>img{
     border: 0;
     border-radius: 4px;
     margin: 0;
+    cursor: pointer;
+}
+#formPage>aside>form>button:hover{
+    background-color: #3F8F6B;
 }
 /*#endregion*/
 

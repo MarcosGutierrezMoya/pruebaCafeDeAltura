@@ -107,8 +107,8 @@
     <main id="bolsasCafe">
         <section>
             <h2 id="News">Novedades</h2>
-            <div>
-                <article>
+            <div id="coffeePlace">
+                <!-- <article>
                     <img src="assets/img/CoffeBags/CoffeeBagCR.svg" alt="bolsa cafe costa rica">
                     <div>
                         <input type="button" value="Costa Rica Tarrazú">
@@ -139,7 +139,7 @@
                         <p>9,00 €</p>
                     </div>
                     <input class="masProducto" type="button" value="Añadir">
-                </article>
+                </article> -->
             </div>
             <article>
                 <a href="">Ver todos</a>
@@ -229,14 +229,14 @@
             </div>
         </article>
         <aside> <!--formulario-->
-            <form action="" method="get">
+            <form id="submit" method="get">
                 <div>
                     <label for="username">Nombre completo</label><br>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" required autocomplete="off">
                 </div>
                 <div>
                     <label for="email">Email</label><br>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required autocomplete="off">
                 </div>
                 <div>
                     <label for="tlf">Teléfono</label><br>
@@ -248,7 +248,7 @@
                         <option value="US">US</option>
                         <option value="ESP">ESP</option>
                     </datalist> -->
-                    <input type="number" id="tlf" name="tlf" min="0" minlength="9" maxlength="9" list="pais" required>
+                    <input type="number" id="tlf" name="tlf" min="0" minlength="9" maxlength="9" list="pais" required autocomplete="off">
                 </div>
                 <div>
                     <p></p>

@@ -1,4 +1,5 @@
 // import { ponerPrecio, precio } from "./cesta.js";
+import myJson from '../jsonFiles/coffee.json' assert {type: 'json'};
 // let flechas = [];
 // flechas = document.getElementsByClassName("flechaFaq");
 if (document.title == "Café de altura") {
@@ -7,7 +8,31 @@ if (document.title == "Café de altura") {
     let source = "";
     let adds = 0;
     // let cantidad = 0;
-    
+
+    //#region Bolsas de café
+    let coffeePLace = document.getElementById("coffeePlace");
+    for (let i = 0; i < 4; i++) {
+        let coffeeArticle = coffeePLace.appendChild(document.createElement("article"));
+        //Imagen
+        let coffeeImg = coffeeArticle.appendChild(document.createElement("img"));
+        coffeeImg.src = myJson[i].img_url;
+        //Nombre
+        let coffeDiv = coffeeArticle.appendChild(document.createElement("div"));
+        let coffeName = coffeDiv.appendChild(document.createElement("input"));
+        coffeName.type = "button";
+        coffeName.value = myJson[i].brand;
+        //Precio
+        let coffePrice = coffeDiv.appendChild(document.createElement("p"));
+        coffePrice.innerText = `${myJson[i].price} €`;
+        //Botón
+        let coffeButton = coffeeArticle.appendChild(document.createElement("input"));
+        coffeButton.type = "button";
+        coffeButton.classList = "masProducto";
+        coffeButton.value = "Añadir";
+    }
+
+    //#endregion
+
     localStorage.clear();
 
     //#region Prueba para primera vez en la página
@@ -21,12 +46,14 @@ if (document.title == "Café de altura") {
     // }
     //#endregion
     
+    //#region Añadir eventos
+
     function añadir() {
         if (adds < 4) {
             adds += 1;
-            precio = this.previousSibling.previousSibling.children[1].textContent;
-            nombre = this.previousSibling.previousSibling.children[0].value;
-            source = this.previousSibling.previousSibling.previousSibling.previousSibling.src;
+            precio = this.previousSibling.children[1].textContent;
+            nombre = this.previousSibling.children[0].value;
+            source = this.previousSibling.previousSibling.src;
             localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source}));
             localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
         }
@@ -77,8 +104,123 @@ if (document.title == "Café de altura") {
     for (let i = 0; i < document.getElementsByClassName("masProducto").length; i++) {
         document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
     }
+    document.getElementById("text0").hidden = true;
+    document.getElementById("text1").hidden = true;
     document.getElementById("text2").hidden = true;
+    //#endregion
+
+    //#region Formulario
+    const userName = document.getElementById("username");
+    const userMail = document.getElementById("email");
+    const userTlf = document.getElementById("tlf");
+    const userOpinion = document.getElementById("opinion");
+    const userPrivacityTerms = document.getElementById("politicas");
+    const submitForm = document.getElementById("submit");
     
+    submitForm.addEventListener('submit', function (e) {
+        // prevent the form from submitting
+        e.preventDefault();
+
+        let isUsernameValid = checkUsername(),
+        isEmailValid = checkEmail(),
+        isTlfValid = checkUserTlf();
+
+        let isFormValid = isUsernameValid &&
+            isEmailValid &&
+            isTlfValid;
+
+        console.log(isFormValid);
+        // submit to the server if the form is valid
+        if (isFormValid) {
+            localStorage.setItem("Usuario",JSON.stringify({"name":userName.value,"email":userMail.value,"Telephone":userTlf.value}))
+        }
+    });
+
+    const isBetween = (length, min, max) => length < min || length > max ? false : true;
+    const isRequired = value => value === '' ? false : true;
+
+    function isEmailValid (email){
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+
+    function checkUsername() {
+
+        let valid = false;
+        const min = 3,
+            max = 25;
+        const username = userName.value.trim();
+    
+        if (!isRequired(username)) {
+            alert(`${userName.value}. El nombre de usuario no puede estar en blanco`);
+        } else if (!isBetween(username.length, min, max)) {
+            alert(`${userName.value}. Debe tener una longitud de entre ${min} y ${max} letras.`)
+        } else {
+            // showSuccess(userName);
+            valid = true;
+        }
+        return valid;
+    }
+
+    function checkUserTlf() {
+
+        let valid = false;
+        const min = 9,
+            max = 9;
+        const userTelephone = userTlf.value.trim();
+    
+        if (!isRequired(userTelephone)) {
+            alert(`${userTlf.value}. El numero de teléfono no puede estar en blanco`);
+        } else if (!isBetween(userTelephone.length, min, max)) {
+            alert(`${userTlf.value}. Debe tener una longitud de ${min} números.`)
+        } else {
+            // showSuccess(userTlf);
+            valid = true;
+        }
+        return valid;
+    }
+
+    function checkEmail() {
+
+        let valid = false;
+        const email = userMail.value.trim();
+
+        if (!isRequired(email)) {
+            alert(`${userMail.value}. El email no puede estar en blanco.`);
+        } else if (!isEmailValid(email)) {
+            alert(`${userMail.value}. Este email no es valido.`)
+        } else {
+            // showSuccess(userMail);
+            valid = true;
+        }
+        return valid;
+    }
+
+    const showError = (input, message) => {
+        // get the form-field element
+        const formField = input.parentElement;
+        // add the error class
+        formField.classList.remove('success');
+        formField.classList.add('error');
+    
+        // show the error message
+        const error = formField.querySelector('small');
+        error.textContent = message;
+    };
+
+    const showSuccess = (input) => {
+        // get the form-field element
+        const formField = input.parentElement;
+    
+        // remove the error class
+        formField.classList.remove('error');
+        formField.classList.add('success');
+    
+        // hide the error message
+        const error = formField.querySelector('small');
+        error.textContent = '';
+    }
+    //#endregion
 }
 else if (document.title == "Cesta") {
     let zonaProducto = document.getElementsByClassName("zonaProducto")[0];

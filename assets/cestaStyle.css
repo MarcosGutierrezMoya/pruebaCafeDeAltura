@@ -42,7 +42,26 @@ body>main>div>aside{
     font-size: 18px;
     font-weight: 600;
 }
-
+/*=========Envíos========*/
+#productos>section{
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+#productos>section>input{
+    background-color: #2A5B45;
+}
+#productos>section>div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#productos>section>div>p{
+    font-size: 14px;
+    font-weight: 400;
+}
+/*========Productos==========*/
 .producto{
     display: flex;
     gap: 24px;
@@ -95,6 +114,7 @@ body>main>div>aside{
 }
 /* #endregion  */
 
+/* #region operacion cesta */
 #prize{
     padding: 24px;
     width: 384px;
@@ -103,11 +123,10 @@ body>main>div>aside{
     flex-direction: column;
     gap:16px;
 }
-#prize>.separador{
+.separador{
     height: 1px;
     width: 100%;
     background-color: #E3DED7;
-    margin-bottom: 16px;
 }
 #prize>h3{
     font-size: 18px;
@@ -151,3 +170,5 @@ body>main>div>aside{
     font-size: 14px;
     font-weight: 600;
 }
+
+/* #endregion */
