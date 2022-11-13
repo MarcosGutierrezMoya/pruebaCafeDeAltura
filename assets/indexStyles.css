@@ -393,8 +393,14 @@ main>section>article>a>img{
     font-size: 13px;
     font-weight: 400;
 }
-.FAQtext.current-item{
+#faq1.current-item{
     height: 50px;
+}
+#faq2.current-item{
+    height: 80px;
+}
+#faq3.current-item{
+    height: 35px;
 }
 .FAQtext{
     height: 0;

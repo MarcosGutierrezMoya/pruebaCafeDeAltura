@@ -70,14 +70,12 @@ if (document.title == "Café de altura") {
                 if (p1.classList.contains('current-item')) {
                     
                     for (var e=0; e<1; e++) {
-                        
+                        this.src=srcDown;
                         p1.classList.remove('current-item');
                     } 
-                    console.log(p1.classList);
                 } else {
-                    
+                    this.src=srcUp;
                     p1.classList.add('current-item');
-                    console.log(p1.classList);
                 }
                 // if(p1.hidden==true){
                 //     // p1.hidden=false;
@@ -88,21 +86,27 @@ if (document.title == "Café de altura") {
                 // }
                 break;
             case "flecha2":
-                if(p2.hidden==true){
-                    p2.hidden=false;
+                if (p2.classList.contains('current-item')) {
+                    
+                    for (var e=0; e<1; e++) {
+                        this.src=srcDown;
+                        p2.classList.remove('current-item');
+                    } 
+                } else {
                     this.src=srcUp;
-                } else{
-                    p2.hidden=true;
-                    this.src=srcDown;
+                    p2.classList.add('current-item');
                 }
                 break;
             case "flecha3":
-                if(p3.hidden==true){
-                    p3.hidden=false;
+                if (p3.classList.contains('current-item')) {
+                    
+                    for (var e=0; e<1; e++) {
+                        this.src=srcDown;
+                        p3.classList.remove('current-item');
+                    } 
+                } else {
                     this.src=srcUp;
-                } else{
-                    p3.hidden=true;
-                    this.src=srcDown;
+                    p3.classList.add('current-item');
                 }
                 break;
             default:
@@ -116,8 +120,8 @@ if (document.title == "Café de altura") {
         document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
     }
     // document.getElementsByClassName("FAQtext")[0].hidden = true;
-    document.getElementsByClassName("FAQtext")[1].hidden = true;
-    document.getElementsByClassName("FAQtext")[2].hidden = true;
+    // document.getElementsByClassName("FAQtext")[1].hidden = true;
+    // document.getElementsByClassName("FAQtext")[2].hidden = true;
     //#endregion
 
     //#region Formulario
