@@ -33,7 +33,7 @@ if (document.title == "Café de altura") {
 
     //#endregion
 
-    localStorage.clear();
+    // localStorage.clear();
 
     //#region Prueba para primera vez en la página
     // if (!localTime) {
@@ -49,8 +49,10 @@ if (document.title == "Café de altura") {
     //#region Añadir eventos
 
     function añadir() {
+        let numCarrito = document.getElementById("carrito");
         if (adds < 4) {
             adds += 1;
+            numCarrito.innerText = adds;
             precio = this.previousSibling.children[1].textContent;
             nombre = this.previousSibling.children[0].value;
             source = this.previousSibling.previousSibling.src;
@@ -167,11 +169,11 @@ if (document.title == "Café de altura") {
         const username = userName.value.trim();
     
         if (!isRequired(username)) {
-            alert(`${userName.value}. El nombre de usuario no puede estar en blanco`);
+            showError(userName, `El nombre de usuario no puede estar en blanco`);
         } else if (!isBetween(username.length, min, max)) {
-            alert(`${userName.value}. Debe tener una longitud de entre ${min} y ${max} letras.`)
+            showError(userName, `Debe tener una longitud de entre ${min} y ${max} letras.`)
         } else {
-            // showSuccess(userName);
+            showSuccess(userName);
             valid = true;
         }
         return valid;
@@ -185,11 +187,11 @@ if (document.title == "Café de altura") {
         const userTelephone = userTlf.value.trim();
     
         if (!isRequired(userTelephone)) {
-            alert(`${userTlf.value}. El numero de teléfono no puede estar en blanco`);
+            showError(userTlf, `El numero de teléfono no puede estar en blanco`);
         } else if (!isBetween(userTelephone.length, min, max)) {
-            alert(`${userTlf.value}. Debe tener una longitud de ${min} números.`)
+            showError(userTlf, `Debe tener una longitud de ${min} números.`)
         } else {
-            // showSuccess(userTlf);
+            showSuccess(userTlf);
             valid = true;
         }
         return valid;
@@ -201,11 +203,11 @@ if (document.title == "Café de altura") {
         const email = userMail.value.trim();
 
         if (!isRequired(email)) {
-            alert(`${userMail.value}. El email no puede estar en blanco.`);
+            showError(userMail, `El email no puede estar en blanco.`);
         } else if (!isEmailValid(email)) {
-            alert(`${userMail.value}. Este email no es valido.`)
+            showError(userMail, `Este email no es valido.`)
         } else {
-            // showSuccess(userMail);
+            showSuccess(userMail);
             valid = true;
         }
         return valid;
@@ -235,7 +237,104 @@ if (document.title == "Café de altura") {
         const error = formField.querySelector('small');
         error.textContent = '';
     }
+
+    const debounce = (fn, delay = 500) => {
+        let timeoutId;
+        return (...args) => {
+            // cancel the previous timer
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            // setup a new timer
+            timeoutId = setTimeout(() => {
+                fn.apply(null, args)
+            }, delay);
+        };
+    };
+
+    submit.addEventListener('input', debounce(function (e) {
+        switch (e.target.id) {
+            case 'username':
+                checkUsername();
+                break;
+            case 'email':
+                checkEmail();
+                break;
+            case 'password':
+                checkPassword();
+                break;
+            case 'confirm-password':
+                checkConfirmPassword();
+                break;
+        }
+    }));
     //#endregion
+}
+else if (document.title == "Tienda") {
+    let precio = 0;
+    let nombre = "";
+    let source = "";
+    let cantidad = 0;    let adds = 0;
+
+    localStorage.clear();
+
+    //#region Bolsas de café
+    let coffeePLace1 = document.getElementById("coffeePlace1");
+    for (let i = 0; i < 4; i++) {
+        let coffeeArticle = coffeePLace1.appendChild(document.createElement("article"));
+        //Imagen
+        let coffeeImg = coffeeArticle.appendChild(document.createElement("img"));
+        coffeeImg.src = myJson[i].img_url;
+        //Nombre
+        let coffeDiv = coffeeArticle.appendChild(document.createElement("div"));
+        let coffeName = coffeDiv.appendChild(document.createElement("input"));
+        coffeName.type = "button";
+        coffeName.value = myJson[i].brand;
+        //Precio
+        let coffePrice = coffeDiv.appendChild(document.createElement("p"));
+        coffePrice.innerText = `${myJson[i].price} €`;
+        //Botón
+        let coffeButton = coffeeArticle.appendChild(document.createElement("input"));
+        coffeButton.type = "button";
+        coffeButton.classList = "masProducto";
+        coffeButton.value = "Añadir";
+    }
+    let coffeePLace2 = document.getElementById("coffeePlace2");
+    for (let i = 4; i < 8; i++) {
+        let coffeeArticle = coffeePLace2.appendChild(document.createElement("article"));
+        //Imagen
+        let coffeeImg = coffeeArticle.appendChild(document.createElement("img"));
+        coffeeImg.src = myJson[i].img_url;
+        //Nombre
+        let coffeDiv = coffeeArticle.appendChild(document.createElement("div"));
+        let coffeName = coffeDiv.appendChild(document.createElement("input"));
+        coffeName.type = "button";
+        coffeName.value = myJson[i].brand;
+        //Precio
+        let coffePrice = coffeDiv.appendChild(document.createElement("p"));
+        coffePrice.innerText = `${myJson[i].price} €`;
+        //Botón
+        let coffeButton = coffeeArticle.appendChild(document.createElement("input"));
+        coffeButton.type = "button";
+        coffeButton.classList = "masProducto";
+        coffeButton.value = "Añadir";
+    }
+
+    //#endregion
+
+    function añadir() {
+        if (adds < 8) {
+            adds += 1;
+            precio = this.previousSibling.children[1].textContent;
+            nombre = this.previousSibling.children[0].value;
+            source = this.previousSibling.previousSibling.src;
+            localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":cantidad += 1}));
+            localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+        }
+    }
+    for (let i = 0; i < document.getElementsByClassName("masProducto").length; i++) {
+        document.getElementsByClassName("masProducto")[i].addEventListener("click",añadir);
+    }
 }
 else if (document.title == "Cesta") {
     let zonaProducto = document.getElementsByClassName("zonaProducto")[0];

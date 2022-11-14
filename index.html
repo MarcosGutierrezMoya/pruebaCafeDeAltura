@@ -56,6 +56,7 @@
                 <a href="assets/pages/cesta.html">
                     <input type="image" src="assets/img/tiendaLogo.svg" alt="Logo de la cesta">
                 </a>
+                <p id="carrito"></p>
             </div>
         </section>
     </nav>
@@ -188,7 +189,7 @@
             </article>
         </main>
         <article>
-            <a href="">Ver todos </a>
+            <a href="assets/pages/sobreNosotros.html">Ver todos </a>
             <img src="assets/img/flechaBlanca.svg" alt="flecha">
         </article>
     </article>
@@ -229,26 +230,31 @@
             </div>
         </article>
         <aside> <!--formulario-->
-            <form id="submit" method="get">
-                <div>
-                    <label for="username">Nombre completo</label><br>
-                    <input type="text" id="username" name="username" required autocomplete="off">
+            <form id="submit">
+                <div class="form-field">
+                    <label for="username">Nombre completo</label>
+                    <input type="text" id="username" name="username" required autocomplete="off" placeholder="Nombre Completo">
+                    <small></small>
                 </div>
-                <div>
-                    <label for="email">Email</label><br>
+                <div class="form-field">
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" required autocomplete="off">
+                    <small></small>
                 </div>
-                <div>
-                    <label for="tlf">Teléfono</label><br>
-                    <select name="pais" id="pais">
-                        <option value="US">US</option>
-                        <option value="ESP">ESP</option>
-                    </select>
-                    <!-- <datalist id="dl" style="width: 10%;">
-                        <option value="US">US</option>
-                        <option value="ESP">ESP</option>
-                    </datalist> -->
-                    <input type="number" id="tlf" name="tlf" min="0" minlength="9" maxlength="9" list="pais" required autocomplete="off">
+                <div class="form-field">
+                    <label for="tlf">Teléfono</label>
+                    <div>
+                        <select name="pais" id="pais">
+                            <option value="US">US</option>
+                            <option value="ESP">ESP</option>
+                        </select>
+                        <!-- <datalist id="dl" style="width: 10%;">
+                            <option value="US">US</option>
+                            <option value="ESP">ESP</option>
+                        </datalist> -->
+                        <input type="number" id="tlf" name="tlf" min="0" minlength="9" maxlength="9" list="pais" required autocomplete="off">
+                    </div>
+                    <small></small>
                 </div>
                 <div>
                     <p></p>
@@ -259,7 +265,7 @@
                     <p>
                         Acepto la <a href="">Política de privacidad</a> y los <a href="">Términos y condiciones</a>
                     </p>
-                </div>
+                </div class="form-field">
                 <button type="submit">Enviar</button>
             </form>
         </aside>
