@@ -7,7 +7,7 @@ if (document.title == "Café de altura") {
     let nombre = "";
     let source = "";
     let adds = 0;
-    // let cantidad = 0;
+    let cantidad = 0;
 
     //#region Bolsas de café
     let coffeePLace = document.getElementById("coffeePlace");
@@ -50,14 +50,23 @@ if (document.title == "Café de altura") {
 
     function añadir() {
         let numCarrito = document.getElementById("carrito");
+        let cuenta = 0;
         if (adds < 4) {
             adds += 1;
+            if (cuenta>0) {
+                let esto = JSON.parse(localStorage.getItem(`precio${adds}`))
+            }
             numCarrito.innerText = adds;
             precio = this.previousSibling.children[1].textContent;
             nombre = this.previousSibling.children[0].value;
             source = this.previousSibling.previousSibling.src;
-            localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source}));
-            localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+
+            for (let i = 0; i < myJson.length; i++) {
+                if (myJson[i].brand == nombre) {
+                    localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":1}));
+                    localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+                }
+            }
         }
     }
     function occult(i) {
@@ -347,7 +356,15 @@ else if (document.title == "Cesta") {
     
     if(JSON.parse(localStorage.getItem("cantidad"))) {
         let cuantity = JSON.parse(localStorage.getItem("cantidad"));
+        let subTotalPrice = document.getElementById("subtotal");
+        let totalPrice = document.getElementById("total");
+        let sendPrice = document.getElementById("sendPrice");
+        let urgentSendPrice = document.getElementById("urgentSendPrice");
+        let sendTotalPrice = document.getElementById("sendTotalPrice");
         
+        document.getElementById("send").addEventListener("click",changeSendPrice);
+        document.getElementById("urgentSend").addEventListener("click",changeSendPrice);
+
         for (let i = 1; i <= Object.values(cuantity)[0]; i++) {
             let obj = JSON.parse(localStorage.getItem(`precio${i}`));
             //#region CreaElementos
@@ -363,7 +380,7 @@ else if (document.title == "Cesta") {
             
             let imgDivMinus = divMinus.appendChild(document.createElement("img"));
             imgDivMinus.src = "../img/logo-.svg";
-            divMinus.addEventListener("click",()=>{let cantidad = parseInt(cantidadProducto.textContent);console.log(cantidad);(cantidad>1)?cantidad -=1 : cantidad;cantidadProducto.innerText = cantidad.toString()});
+            divMinus.addEventListener("click",restarPrecio);
             
             let cantidadProducto = divCatidad.appendChild(document.createElement("p"));
             cantidadProducto.setAttribute("class","cantidadProducto");
@@ -371,7 +388,7 @@ else if (document.title == "Cesta") {
             
             let imgDivPlus = divPlus.appendChild(document.createElement("img"));
             imgDivPlus.src = "../img/logo+.svg";
-            divPlus.addEventListener("click",()=>{let cantidad = parseInt(cantidadProducto.textContent) ;cantidad+=1; cantidadProducto.innerText = cantidad.toString()});
+            divPlus.addEventListener("click",sumarPrecio);
             
             //Imagen producto
             let newImgProduct = article.appendChild(document.createElement("img"));
@@ -387,21 +404,65 @@ else if (document.title == "Cesta") {
             //Precio del producto
             let priceProduct = article.appendChild(document.createElement("h3"));
             priceProduct.setAttribute("class","precioProducto");
-            priceProduct.innerText = Object.values(obj)[1];
+            priceProduct.innerText = `${parseInt(Object.values(obj)[1])*parseInt(cantidadProducto.textContent)},00€`;
             
+            subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + parseInt(priceProduct.innerText)},00€`;
             // let separador = article.appendChild(document.createElement("div"));
             // separador.setAttribute("class","separador");
             // separador.style.width = 3+"rem";
- 
+            
             //#endregion
             
-            let subTotalPrice = document.getElementById("subtotal");
-            let totalPrice = document.getElementById("total");
-            
-            cantidad = parseInt(Object.values(obj)[1]);
-            subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + cantidad},00€`;
-
             totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`
+            
+            
+                    function restarPrecio() {
+                        let cantidad = parseInt(cantidadProducto.textContent);
+                        if (cantidad>1) {
+                            cantidad -=1;
+                            cantidadProducto.innerText = cantidad.toString()
+                            priceProduct.innerText = `${parseInt(Object.values(obj)[1])*parseInt(cantidadProducto.textContent)},00€`;
+                            
+                            subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) - (parseInt(priceProduct.innerText)/parseInt(cantidadProducto.textContent))},00€`;
+                            putSendPrice();
+                        }
+                    }
+            
+                    function sumarPrecio() {
+                        let cantidad = parseInt(cantidadProducto.textContent);
+                        cantidad+=1;
+                        cantidadProducto.innerText = cantidad.toString();
+                        priceProduct.innerText = `${parseInt(Object.values(obj)[1])*parseInt(cantidadProducto.textContent)},00€`;
+            
+                        subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + (parseInt(priceProduct.innerText)/parseInt(cantidadProducto.textContent))},00€`;
+                        totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`;
+                        putSendPrice();
+                    }
+        }
+
+        function changeSendPrice(item) {
+            switch (item.target.id) {
+                case "send":
+                    sendTotalPrice.innerText = sendPrice.textContent;
+                    document.getElementById("urgentSend").checked = false;
+                    break;
+                    case "urgentSend":
+                    sendTotalPrice.innerText = urgentSendPrice.textContent
+                    document.getElementById("send").checked = false;
+                    putSendPrice();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        function putSendPrice() {
+            if (sendTotalPrice.textContent == sendPrice.textContent) {
+                totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`
+            }
+            else{
+                totalPrice.innerText = `${parseInt(subTotalPrice.textContent)+parseInt(sendTotalPrice.textContent)},00€`
+            }
         }
 
         //#region Prueba del articulo
