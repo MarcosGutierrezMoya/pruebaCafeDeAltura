@@ -3,11 +3,15 @@ import myJson from '../jsonFiles/coffee.json' assert {type: 'json'};
 // let flechas = [];
 // flechas = document.getElementsByClassName("flechaFaq");
 if (document.title == "Café de altura") {
+    let bolsitas = document.getElementsByClassName("masProducto");
     let precio = 0;
     let nombre = "";
     let source = "";
     let adds = 0;
-    let cantidad = 0;
+    let cantidad1 = 0;
+    let cantidad2 = 0;
+    let cantidad3 = 0;
+    let cantidad4 = 0;
 
     //#region Bolsas de café
     let coffeePLace = document.getElementById("coffeePlace");
@@ -50,21 +54,38 @@ if (document.title == "Café de altura") {
 
     function añadir() {
         let numCarrito = document.getElementById("carrito");
-        let cuenta = 0;
-        if (adds < 4) {
-            adds += 1;
-            if (cuenta>0) {
-                let esto = JSON.parse(localStorage.getItem(`precio${adds}`))
-            }
-            numCarrito.innerText = adds;
-            precio = this.previousSibling.children[1].textContent;
-            nombre = this.previousSibling.children[0].value;
-            source = this.previousSibling.previousSibling.src;
-
-            for (let i = 0; i < myJson.length; i++) {
-                if (myJson[i].brand == nombre) {
-                    localStorage.setItem(`precio${adds}`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":1}));
-                    localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+        localStorage.setItem("bolsitas",bolsitas.length);
+        adds += 1;
+        numCarrito.innerText = adds;
+        localStorage.setItem("numCarrito",numCarrito.textContent);
+        precio = this.previousSibling.children[1].textContent;
+        nombre = this.previousSibling.children[0].value;
+        source = this.previousSibling.previousSibling.src;
+        for (let i = 0; i < myJson.length; i++) {
+            if (myJson[i].brand == nombre) {
+                switch (myJson[i].brand) {
+                    case "Costa Rica Tarrazú":
+                        cantidad1++;
+                        localStorage.setItem(`precio1`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":cantidad1}));
+                        // localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+                        break;
+                    case "Colombia Los Naranjos":
+                        cantidad2++;
+                        localStorage.setItem(`precio2`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":cantidad2}));
+                        // localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+                        break;
+                    case "Laos Amanecer":
+                        cantidad3++;
+                        localStorage.setItem(`precio3`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":cantidad3}));
+                        // localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+                        break;
+                    case "Etiopía Yrgacheff":
+                        cantidad4++;
+                        localStorage.setItem(`precio4`,JSON.stringify({"name":nombre, "price":precio,"src":source,"cantidad":cantidad4}));
+                        // localStorage.setItem("cantidad",JSON.stringify({"num": adds}))
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -353,9 +374,13 @@ else if (document.title == "Cesta") {
     // let infoProducto = document.getElementsByClassName("infoProducto")[0];
     //#endregion
     let cantidad = 0;
-    
-    if(JSON.parse(localStorage.getItem("cantidad"))) {
-        let cuantity = JSON.parse(localStorage.getItem("cantidad"));
+    let bolsitasPrecio = localStorage.getItem("bolsitas");
+    let numCarrito = document.getElementById("carrito");
+    numCarrito.innerText = localStorage.getItem("numCarrito");
+
+    if(localStorage.length > 1) {
+        console.log(bolsitasPrecio);
+        // let cuantity = JSON.parse(localStorage.getItem("cantidad"));
         let subTotalPrice = document.getElementById("subtotal");
         let totalPrice = document.getElementById("total");
         let sendPrice = document.getElementById("sendPrice");
@@ -365,56 +390,57 @@ else if (document.title == "Cesta") {
         document.getElementById("send").addEventListener("click",changeSendPrice);
         document.getElementById("urgentSend").addEventListener("click",changeSendPrice);
 
-        for (let i = 1; i <= Object.values(cuantity)[0]; i++) {
-            let obj = JSON.parse(localStorage.getItem(`precio${i}`));
-            //#region CreaElementos
-            let article = zonaProducto.appendChild(document.createElement("article"));
-            article.setAttribute("class","producto");
-            let selecCantidad = article.appendChild(document.createElement("div"));
-            selecCantidad.setAttribute("class","cantidad");
-            
-            //Seccion sumar y restar cantidad
-            let divMinus = selecCantidad.appendChild(document.createElement("div"));
-            let divCatidad = selecCantidad.appendChild(document.createElement("section"));
-            let divPlus = selecCantidad.appendChild(document.createElement("div"));
-            
-            let imgDivMinus = divMinus.appendChild(document.createElement("img"));
-            imgDivMinus.src = "../img/logo-.svg";
-            divMinus.addEventListener("click",restarPrecio);
-            
-            let cantidadProducto = divCatidad.appendChild(document.createElement("p"));
-            cantidadProducto.setAttribute("class","cantidadProducto");
-            cantidadProducto.innerText = 1;
-            
-            let imgDivPlus = divPlus.appendChild(document.createElement("img"));
-            imgDivPlus.src = "../img/logo+.svg";
-            divPlus.addEventListener("click",sumarPrecio);
-            
-            //Imagen producto
-            let newImgProduct = article.appendChild(document.createElement("img"));
-            newImgProduct.src = Object.values(obj)[2];
-            newImgProduct.setAttribute("class","imgProducto");
-            
-            //Info imagen producto
-            let infoImgProduct = article.appendChild(document.createElement("div"));
-            infoImgProduct.setAttribute("class","infoProducto");
-            let nameProduct = infoImgProduct.appendChild(document.createElement("p"));
-            nameProduct.appendChild(document.createElement("strong")).innerText = Object.values(obj)[0];
-            infoImgProduct.appendChild(document.createElement("p")).innerText = "Paquete de café, 250 gr";
-            //Precio del producto
-            let priceProduct = article.appendChild(document.createElement("h3"));
-            priceProduct.setAttribute("class","precioProducto");
-            priceProduct.innerText = `${parseInt(Object.values(obj)[1])*parseInt(cantidadProducto.textContent)},00€`;
-            
-            subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + parseInt(priceProduct.innerText)},00€`;
-            // let separador = article.appendChild(document.createElement("div"));
-            // separador.setAttribute("class","separador");
-            // separador.style.width = 3+"rem";
-            
-            //#endregion
-            
-            totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`
-            
+        for (let i = 1; i <= bolsitasPrecio; i++) {
+            if (localStorage.getItem(`precio${i}`)) {
+                let obj = JSON.parse(localStorage.getItem(`precio${i}`));
+                //#region CreaElementos
+                let article = zonaProducto.appendChild(document.createElement("article"));
+                article.setAttribute("class","producto");
+                let selecCantidad = article.appendChild(document.createElement("div"));
+                selecCantidad.setAttribute("class","cantidad");
+                
+                //Seccion sumar y restar cantidad
+                let divMinus = selecCantidad.appendChild(document.createElement("div"));
+                let divCatidad = selecCantidad.appendChild(document.createElement("section"));
+                let divPlus = selecCantidad.appendChild(document.createElement("div"));
+                
+                let imgDivMinus = divMinus.appendChild(document.createElement("img"));
+                imgDivMinus.src = "../img/logo-.svg";
+                divMinus.addEventListener("click",restarPrecio);
+                
+                let cantidadProducto = divCatidad.appendChild(document.createElement("p"));
+                cantidadProducto.setAttribute("class","cantidadProducto");
+                cantidadProducto.innerText = Object.values(obj)[3];
+                
+                let imgDivPlus = divPlus.appendChild(document.createElement("img"));
+                imgDivPlus.src = "../img/logo+.svg";
+                divPlus.addEventListener("click",sumarPrecio);
+                
+                //Imagen producto
+                let newImgProduct = article.appendChild(document.createElement("img"));
+                newImgProduct.src = Object.values(obj)[2];
+                newImgProduct.setAttribute("class","imgProducto");
+                
+                //Info imagen producto
+                let infoImgProduct = article.appendChild(document.createElement("div"));
+                infoImgProduct.setAttribute("class","infoProducto");
+                let nameProduct = infoImgProduct.appendChild(document.createElement("p"));
+                nameProduct.appendChild(document.createElement("strong")).innerText = Object.values(obj)[0];
+                infoImgProduct.appendChild(document.createElement("p")).innerText = "Paquete de café, 250 gr";
+                //Precio del producto
+                let priceProduct = article.appendChild(document.createElement("h3"));
+                priceProduct.setAttribute("class","precioProducto");
+                priceProduct.innerText = `${parseInt(Object.values(obj)[1])*parseInt(cantidadProducto.textContent)},00€`;
+                
+                subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) + parseInt(priceProduct.innerText)},00€`;
+                // let separador = article.appendChild(document.createElement("div"));
+                // separador.setAttribute("class","separador");
+                // separador.style.width = 3+"rem";
+                
+                //#endregion
+                
+                totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`
+                
             
                     function restarPrecio() {
                         let cantidad = parseInt(cantidadProducto.textContent);
@@ -438,6 +464,7 @@ else if (document.title == "Cesta") {
                         totalPrice.innerText = `${parseInt(subTotalPrice.textContent)},00€`;
                         putSendPrice();
                     }
+            }
         }
 
         function changeSendPrice(item) {
