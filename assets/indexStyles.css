@@ -81,6 +81,17 @@ body{
     height: 32px;
     width: 130px;
 }
+#cuentaProductos{
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+    text-align: center;
+    position: relative;
+    right: 1rem;
+    bottom: 0.5rem;
+    font-size: 14px;
+    width: 1rem;
+}
 /*#endregion */
 
 /*#region Articulo e imagen en el header*/
@@ -519,6 +530,7 @@ main>section>article>a>img{
     margin: 0;
     color: #2B2A2B;
 }
+
 /*============= Parte de la drch ===============*/
 #formPage>aside{
     margin-right: 40px;
@@ -543,7 +555,9 @@ main>section>article>a>img{
     color: #6B7280;
     width: 100%;
 }
-/* Error o success */
+
+
+/*============= Error o success zone ===========*/
 #submit>.error>input{
     border:2px solid red;
     border-radius: 6px;
@@ -560,7 +574,42 @@ main>section>article>a>img{
     color: #6B7280;
     width: 100%;
 }
-#formPage>aside>form>div:nth-child(2)>input{
+#submit>.error>textarea{
+    border:2px solid red;
+    border-radius: 6px;
+    height: fit-content;
+    padding: 9px 13px;
+    color: #6B7280;
+    width: 100%;
+}
+#submit>.success>textarea{
+    border:2px solid green;
+    border-radius: 6px;
+    height: fit-content;
+    padding: 9px 13px;
+    color: #6B7280;
+    width: 100%;
+}
+#submit>.error>div>input{
+    border:2px solid red;
+    border-radius: 6px;
+    height: fit-content;
+    padding: 9px 13px;
+    color: #6B7280;
+    width: 100%;
+}
+#submit>.success>div>input{
+    border:2px solid green;
+    border-radius: 6px;
+    height: fit-content;
+    padding: 9px 13px;
+    color: #6B7280;
+    width: 100%;
+}
+/*================ Finish zone ==================*/
+
+
+#formPage>aside>form>div:nth-child(2):not(.error):not(.success)>input{
     border:1px solid #D1D5DB;
     /* box-shadow:0px 1px 2px rgba(0, 0, 0, 0.5);*/
     border-radius: 6px;
@@ -579,7 +628,7 @@ main>section>article>a>img{
     margin-right: 0;
     width: 15%;
 }
-#formPage>aside>form>div:nth-child(3)>div>input{
+#formPage>aside>form>div:nth-child(3):not(.error):not(.success)>div>input{
     border:1px solid #D1D5DB;
     /* box-shadow:0px 1px 2px rgba(0, 0, 0, 0.5);*/
     border-radius: 6px;
@@ -589,7 +638,7 @@ main>section>article>a>img{
     padding: 9px 13px;
     margin-left: 0;
 }
-#formPage>aside>form>div:nth-child(4)>textarea{
+#formPage>aside>form>div:nth-child(4):not(.error):not(.success)>textarea{
     border:1px solid #D1D5DB;
     /* box-shadow:0px 1px 2px rgba(0, 0, 0, 0.5);*/
     border-radius: 6px;
@@ -599,10 +648,10 @@ main>section>article>a>img{
     color: #6B7280;
     margin: 0;
 }
-#formPage>aside>form>div:nth-child(4)>textarea:hover{
+#formPage>aside>form>div:nth-child(4):not(.error):not(.success)>textarea:hover{
     border: 1px solid #9B9EA3;
 }
-#formPage>aside>form>div:nth-child(4)>textarea:focus{
+#formPage>aside>form>div:nth-child(4):not(.error):not(.success)>textarea:focus{
     border: 2px solid #3F8F6B;
 }
 #formPage>aside>form>div:not(.error):not(.success)>input:hover{
@@ -652,6 +701,9 @@ main>section>article>a>img{
 #submit>.form-field{
     display: flex;
     flex-direction: column;
+}
+#submit>.form-field>small{
+    color: red;
 }
 /*#endregion*/
 

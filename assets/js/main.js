@@ -53,7 +53,7 @@ if (document.title == "Café de altura") {
     //#region Añadir eventos
 
     function añadir() {
-        let numCarrito = document.getElementById("carrito");
+        let numCarrito = document.getElementById("cuentaProductos");
         localStorage.setItem("bolsitas",bolsitas.length);
         adds += 1;
         numCarrito.innerText = adds;
@@ -161,7 +161,7 @@ if (document.title == "Café de altura") {
     const userMail = document.getElementById("email");
     const userTlf = document.getElementById("tlf");
     const userOpinion = document.getElementById("opinion");
-    const userPrivacityTerms = document.getElementById("politicas");
+    const userPolitics = document.getElementById("politicas");
     const submitForm = document.getElementById("submit");
     
     submitForm.addEventListener('submit', function (e) {
@@ -170,16 +170,20 @@ if (document.title == "Café de altura") {
 
         let isUsernameValid = checkUsername(),
         isEmailValid = checkEmail(),
-        isTlfValid = checkUserTlf();
+        isTlfValid = checkUserTlf(),
+        isOpinionValid = checkUserOpinion(),
+        isPolitics = checkPolitics();
 
         let isFormValid = isUsernameValid &&
             isEmailValid &&
-            isTlfValid;
+            isTlfValid &&
+            isOpinionValid &&
+            isPolitics;
 
         console.log(isFormValid);
         // submit to the server if the form is valid
         if (isFormValid) {
-            localStorage.setItem("Usuario",JSON.stringify({"name":userName.value,"email":userMail.value,"Telephone":userTlf.value}))
+            localStorage.setItem("Usuario",JSON.stringify({"name":userName.value,"email":userMail.value,"Telephone":userTlf.value,"opinion":userOpinion.value}))
         }
     });
 
@@ -195,16 +199,43 @@ if (document.title == "Café de altura") {
 
         let valid = false;
         const min = 3,
-            max = 25;
+            max = 20;
         const username = userName.value.trim();
-    
+        
         if (!isRequired(username)) {
             showError(userName, `El nombre de usuario no puede estar en blanco`);
         } else if (!isBetween(username.length, min, max)) {
             showError(userName, `Debe tener una longitud de entre ${min} y ${max} letras.`)
         } else {
-            showSuccess(userName);
-            valid = true;
+            if (/(.*[a-zA-Z]{3,20}$)/gm.test(userName.value)) {
+                showSuccess(userName);
+                valid = true;
+            }
+            else{
+                showError(userName, `Tu nombre no puede contener números.`)
+            }
+        }
+        return valid;
+    }
+
+    function checkUserOpinion() {
+
+        let valid = false;
+        const min = 3;
+        const userOp = userOpinion.value.trim();
+        
+        if (!isRequired(userOp)) {
+            showError(userOpinion, `Necesitamos saber en que podemos ayudarte.`);
+        } else if (!isBetween(userOp.length, min)) {
+            showError(userOpinion, `Debe tener una longitud mínima de ${min} caracteres.`)
+        } else {
+            if (/(.*[a-zA-Z0-9]{3,}$)/gm.test(userOpinion.value)) {
+                showSuccess(userOpinion);
+                valid = true;
+            }
+            else{
+                showError(userOpinion, `Tu nombre no puede contener números.`)
+            }
         }
         return valid;
     }
@@ -221,8 +252,13 @@ if (document.title == "Café de altura") {
         } else if (!isBetween(userTelephone.length, min, max)) {
             showError(userTlf, `Debe tener una longitud de ${min} números.`)
         } else {
-            showSuccess(userTlf);
-            valid = true;
+            if (/\d*/.test(userTelephone.value)) {
+                showSuccess(userTlf);
+                valid = true;
+            }
+            else{
+                showError(userTlf, `Solo puede contener números.`)
+            }
         }
         return valid;
     }
@@ -243,9 +279,25 @@ if (document.title == "Café de altura") {
         return valid;
     }
 
+    function checkPolitics() {
+        let politics = userPolitics.classList;
+        if (politics == "on") {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     const showError = (input, message) => {
         // get the form-field element
-        const formField = input.parentElement;
+        let formField = input;
+        if (input.id != "tlf") {
+            formField = input.parentElement;
+        }
+        else{
+            formField = input.parentElement.parentElement;
+        }
         // add the error class
         formField.classList.remove('success');
         formField.classList.add('error');
@@ -257,7 +309,13 @@ if (document.title == "Café de altura") {
 
     const showSuccess = (input) => {
         // get the form-field element
-        const formField = input.parentElement;
+        let formField = input;
+        if (input.id != "tlf") {
+            formField = input.parentElement;
+        }
+        else{
+            formField = input.parentElement.parentElement;
+        }
     
         // remove the error class
         formField.classList.remove('error');
@@ -290,11 +348,15 @@ if (document.title == "Café de altura") {
             case 'email':
                 checkEmail();
                 break;
-            case 'password':
-                checkPassword();
+            case 'tlf':
+                checkUserTlf();
                 break;
-            case 'confirm-password':
-                checkConfirmPassword();
+            case 'opinion':
+                checkUserOpinion();
+                break;
+            case 'politicas':
+                e.target.classList.toggle("on");
+                checkPolitics();
                 break;
         }
     }));
@@ -375,7 +437,7 @@ else if (document.title == "Cesta") {
     //#endregion
     let cantidad = 0;
     let bolsitasPrecio = localStorage.getItem("bolsitas");
-    let numCarrito = document.getElementById("carrito");
+    let numCarrito = document.getElementById("cuentaProductos");
     numCarrito.innerText = localStorage.getItem("numCarrito");
 
     if(localStorage.length > 1) {
@@ -396,6 +458,7 @@ else if (document.title == "Cesta") {
                 //#region CreaElementos
                 let article = zonaProducto.appendChild(document.createElement("article"));
                 article.setAttribute("class","producto");
+                article.setAttribute("id",`precio${i}`);
                 let selecCantidad = article.appendChild(document.createElement("div"));
                 selecCantidad.setAttribute("class","cantidad");
                 
@@ -451,6 +514,12 @@ else if (document.title == "Cesta") {
                             
                             subTotalPrice.innerText = `${parseInt(subTotalPrice.textContent) - (parseInt(priceProduct.innerText)/parseInt(cantidadProducto.textContent))},00€`;
                             putSendPrice();
+                        }
+                        else{
+                            localStorage.removeItem(this.closest("article").id);
+                            this.closest("article").remove();
+                            numCarrito.innerText -= 1;
+                            localStorage.setItem("numCarrito",numCarrito.textContent);
                         }
                     }
             
