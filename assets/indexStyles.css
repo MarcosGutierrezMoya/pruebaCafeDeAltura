@@ -309,9 +309,11 @@ main>section>div>article>.masProducto{
     border: 0;
     border-radius: 4px;
     padding: 8px;
+}
+main>section>div>article:not(.outStock)>.masProducto{
     cursor: pointer;
 }
-main>section>div>article>input:hover{
+main>section>div>article:not(.outStock)>input:hover{
     background-color: #2A5B45B2;
 }
 main>section>div>article>div>p{
@@ -333,6 +335,9 @@ main>section>article>a>img{
     height: 8px;
     width: 18px;
     border-radius: 0px;
+}
+.outStock{
+    filter: grayscale(50%);
 }
 /*#endregion*/
 
